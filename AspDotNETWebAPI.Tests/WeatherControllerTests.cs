@@ -6,7 +6,7 @@ namespace AspDotNETWebAPI.Tests
 	public class WeatherControllerTests
 	{
 		[Fact]
-		void test1()
+		void Should_Return_Weather_Forecast()
 		{
 
 		}
