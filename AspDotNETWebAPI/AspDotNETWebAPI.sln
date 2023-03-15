@@ -5,17 +5,17 @@ VisualStudioVersion = 17.5.33414.496
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspDotNETWebAPI", "AspDotNETWebAPI.csproj", "{841AE568-27EF-444F-9483-83AD87326774}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspDotNETWebAPI.Tests", "..\AspDotNETWebAPI.Tests\AspDotNETWebAPI.Tests.csproj", "{8898F717-FE6A-4A93-AACA-4EB53D1E6776}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspDotNETWebAPI.Tests", "AspDotNETWebAPI.Tests\AspDotNETWebAPI.Tests.csproj", "{8898F717-FE6A-4A93-AACA-4EB53D1E6776}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspDotNETWebAPI.Core", "..\AspDotNETWebAPI.Core\AspDotNETWebAPI.Core.csproj", "{E508053E-6426-47A1-9E4A-6AD820E4651D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspDotNETWebAPI.Core", "AspDotNETWebAPI.Core\AspDotNETWebAPI.Core.csproj", "{E508053E-6426-47A1-9E4A-6AD820E4651D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspDotNETWebAPI.Domain", "..\AspDotNETWebAPI.Domain\AspDotNETWebAPI.Domain.csproj", "{BE6A909A-1872-45AC-8431-2F3160F6DB34}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspDotNETWebAPI.Domain", "AspDotNETWebAPI.Domain\AspDotNETWebAPI.Domain.csproj", "{BE6A909A-1872-45AC-8431-2F3160F6DB34}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspDotNETWebAPI.Persistance", "..\AspDotNETWebAPI.Persistance\AspDotNETWebAPI.Persistance.csproj", "{870540DD-6B82-4A3F-899A-2AADDB0BFA04}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspDotNETWebAPI.Persistance", "AspDotNETWebAPI.Persistance\AspDotNETWebAPI.Persistance.csproj", "{870540DD-6B82-4A3F-899A-2AADDB0BFA04}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspDotNETWebAPI.Core.Tests", "..\AspDotNETWebAPI.Core.Tests\AspDotNETWebAPI.Core.Tests.csproj", "{72C989D1-703F-46AC-A2E3-041E2A261CF7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspDotNETWebAPI.Core.Tests", "AspDotNETWebAPI.Core.Tests\AspDotNETWebAPI.Core.Tests.csproj", "{72C989D1-703F-46AC-A2E3-041E2A261CF7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspDotNETWebAPI.Persistance.Tests", "..\AspDotNETWebAPI.Persistance.Tests\AspDotNETWebAPI.Persistance.Tests.csproj", "{700E6397-7631-4C15-9B39-06DE271E5262}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspDotNETWebAPI.Persistance.Tests", "AspDotNETWebAPI.Persistance.Tests\AspDotNETWebAPI.Persistance.Tests.csproj", "{700E6397-7631-4C15-9B39-06DE271E5262}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
