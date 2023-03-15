@@ -46,5 +46,11 @@ namespace AspDotNETWebAPI.Tests
 			result.ShouldBeOfType(expectedActionResultType);
 			_roomBookingProcessor.Verify(x => x.BookRoom(_request), Times.Exactly(expectedMethodCall));
 		}
+
+		[Fact]
+		public void Should_Return_All_Rooms()
+		{
+			
+		}
 	}
 }
