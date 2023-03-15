@@ -13,12 +13,21 @@ namespace AspDotNETWebAPI.Persistance.Repositories
 		{
 			_dbContext = dbContext;
 		}
+
+		public List<Room> GetAllRooms()
+		{
+			var result = _dbContext.Rooms.ToList();
+			return result;
+		}
+
 		public IEnumerable<Room> GetAvailableRooms(DateTime date)
 		{
 			//var unavailableRoom = _dbContext.RoomBookings.Where(x => x.Date ==date).Select(x=>x.RoomId).ToList();
 
 			//return _dbContext.Rooms.Where(q => unavailableRoom.Contains(q.Id) == false).ToList();
-			return _dbContext.Rooms.Where(q => !q.RoomBookings.Any(q => q.Date == date)).ToList();
+			var result = _dbContext.Rooms.Where(q => !q.RoomBookings.Any(q => q.Date == date)).ToList();
+
+			return result;
 
 		}
 

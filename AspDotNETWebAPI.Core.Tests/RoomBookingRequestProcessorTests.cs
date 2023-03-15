@@ -1,23 +1,21 @@
-using AspDotNETWebAPI.Controllers;
-using AspDotNETWebAPI.Core.DataServices;
+﻿using AspDotNETWebAPI.Core.DataServices;
 using AspDotNETWebAPI.Core.Domain;
 using AspDotNETWebAPI.Core.Models;
 using AspDotNETWebAPI.Core.Processors;
 using AspDotNETWebAPI.Enums;
-using Microsoft.Extensions.Logging;
 using Moq;
 using Shouldly;
 using Xunit;
 
-namespace AspDotNETWebAPI.Tests
+namespace AspDotNETWebAPI.Core.Tests
 {
-	public class AspDotNETWebAPITest
+	public class RoomBookingRequestProcessorTests
 	{
 		private RoomBookingProcessor _processor;
 		private RoomBookingRequest _request;
 		private Mock<IRoomBookingService> _roomBookingServiceMock;
 		private List<Room> _availableRooms;
-		public AspDotNETWebAPITest()
+		public RoomBookingRequestProcessorTests()
 		{
 
 			//Arrange
@@ -33,16 +31,6 @@ namespace AspDotNETWebAPI.Tests
 				.Returns(_availableRooms);
 			_processor = new RoomBookingProcessor(_roomBookingServiceMock.Object);
 
-		}
-		[Fact]
-		public void Should_Return_WeatherForecast()
-		{
-			var loggerMock = new Mock<ILogger<WeatherForecastController>>();
-			var controller = new WeatherForecastController(loggerMock.Object);
-
-			var result = controller.Get();
-			result.Count().ShouldBeGreaterThan(1);
-			result.ShouldNotBeNull();
 		}
 
 		[Fact]
@@ -71,9 +59,9 @@ namespace AspDotNETWebAPI.Tests
 			RoomBooking savedBooking = null;
 			_roomBookingServiceMock.Setup(x => x.Save(It.IsAny<RoomBooking>()))
 				.Callback<RoomBooking>(booking =>
-			{
-				savedBooking = booking;
-			});
+				{
+					savedBooking = booking;
+				});
 			_processor.BookRoom(_request);
 
 			_roomBookingServiceMock.Verify(q => q.Save(It.IsAny<RoomBooking>()), Times.Once);
@@ -87,18 +75,18 @@ namespace AspDotNETWebAPI.Tests
 		[Fact]
 		public void Should_Not_Save_Room_Booking_Request_If_None_Available()
 		{
-		    _availableRooms.Clear();
+			_availableRooms.Clear();
 			_processor.BookRoom(_request);
 
 			_roomBookingServiceMock.Verify(q => q.Save(It.IsAny<RoomBooking>()), Times.Never);
-			
+
 		}
 		[Theory]
 		[InlineData(BookingResultFlag.Failure, false)]
 		[InlineData(BookingResultFlag.Success, true)]
-		public void Should_Return_SuccessFailure_Flag_In_Result(BookingResultFlag bookingResultFlag , bool isAvailable)
+		public void Should_Return_SuccessFailure_Flag_In_Result(BookingResultFlag bookingResultFlag, bool isAvailable)
 		{
-			if(!isAvailable)
+			if (!isAvailable)
 			{
 				_availableRooms.Clear();
 			}
@@ -106,21 +94,21 @@ namespace AspDotNETWebAPI.Tests
 			bookingResultFlag.ShouldBe(result.Flag);
 		}
 		[Theory]
-		[InlineData (1, true)]
-		[InlineData (null, false)]
+		[InlineData(1, true)]
+		[InlineData(null, false)]
 		public void Should_Return_Room_BookingId_In_Result(int? roomBookingId, bool isAvailable)
 		{
-			if(!isAvailable)
+			if (!isAvailable)
 			{
 				_availableRooms.Clear();
-			} 
+			}
 			else
 			{
-			_roomBookingServiceMock.Setup(x => x.Save(It.IsAny<RoomBooking>()))
-				.Callback<RoomBooking>(booking =>
-				{
-					booking.Id = roomBookingId.Value;
-				});
+				_roomBookingServiceMock.Setup(x => x.Save(It.IsAny<RoomBooking>()))
+					.Callback<RoomBooking>(booking =>
+					{
+						booking.Id = roomBookingId.Value;
+					});
 			}
 			var result = _processor.BookRoom(_request);
 			//roomBookingId.ShouldBe();

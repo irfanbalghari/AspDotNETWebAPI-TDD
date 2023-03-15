@@ -61,5 +61,28 @@ namespace AspDotNETWebAPI.Persistance.Tests
 			//result.Count().ShouldBe(1);
 
 		}
+		[Fact]
+		public void Should_Return_all_rooms()
+		{
+			// arrange 
+			var date = new DateTime(2023, 03, 14);
+			var dbOptions = new DbContextOptionsBuilder<RoomBookingAppDbContext>()
+				.UseInMemoryDatabase("SaveRoomTest")
+				.Options;
+
+			var roomBooking = new RoomBooking { RoomId = 1, Date = date };
+			using var context = new RoomBookingAppDbContext(dbOptions);
+
+			context.Add(new Room { Id = 1, Name = "Room 1" });
+			context.Add(new Room { Id = 2, Name = "Room 2" });
+			context.Add(new Room { Id = 3, Name = "Room 3" });
+			var roomBookingService = new RoomBookingService(context);
+			roomBookingService.Save(roomBooking);
+			var result = roomBookingService.GetAllRooms();
+			
+			//result.ShouldNotBeNull();
+			Assert.NotNull(result);
+			result.Count().ShouldBeGreaterThan(0);
+		}
 	}
 }

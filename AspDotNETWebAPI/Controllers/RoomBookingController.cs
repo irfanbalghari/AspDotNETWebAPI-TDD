@@ -1,4 +1,5 @@
-﻿using AspDotNETWebAPI.Core.Models;
+﻿using AspDotNETWebAPI.Core.Domain;
+using AspDotNETWebAPI.Core.Models;
 using AspDotNETWebAPI.Core.Processors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -28,6 +29,12 @@ namespace AspDotNETWebAPI.Controllers
 				ModelState.AddModelError(nameof(result.Date), "No available rooms");
 			}
 			return BadRequest(ModelState);
+		}
+
+		public List<Room> GetAllRooms()
+		{
+			var result = _roomBookingProcessor.GetAllRooms();
+			return result;
 		}
 	}
 }
