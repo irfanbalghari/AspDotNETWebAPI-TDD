@@ -6,6 +6,6 @@ namespace AspDotNETWebAPI.Core.DataServices
 	{
 		void Save(RoomBooking roomBooking);
 		IEnumerable<Room> GetAvailableRooms(DateTime date);
-
+		List<Room> GetAllRooms();
 	}
 }

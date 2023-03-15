@@ -1,4 +1,5 @@
 ﻿using AspDotNETWebAPI.Controllers;
+using AspDotNETWebAPI.Core.Domain;
 using AspDotNETWebAPI.Core.Models;
 using AspDotNETWebAPI.Core.Processors;
 using Microsoft.AspNetCore.Mvc;
@@ -43,7 +44,15 @@ namespace AspDotNETWebAPI.Tests
 		[Fact]
 		public void Should_Return_All_Rooms()
 		{
-			
+			//var rooms = _controller.GetAllRooms();
+			var rooms = new List<Room>(); ;
+			rooms.Add(new Room { Id = 1, Name = "test1" });
+
+			 _roomBookingProcessor.Setup(x=>x.GetAllRooms()).Returns(rooms);
+
+			Assert.NotNull(rooms);
+			rooms.Count().ShouldBeGreaterThan(0);
+
 		}
 	}
 }

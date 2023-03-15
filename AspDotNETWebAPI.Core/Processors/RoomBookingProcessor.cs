@@ -37,6 +37,12 @@ namespace AspDotNETWebAPI.Core.Processors
 
 			return result;
 		}
+
+		public List<Room> GetAllRooms()
+		{
+			return _roomBookingService.GetAllRooms();
+		}
+
 		private TBooking CreateBookingObject<TBooking>(RoomBookingRequest request)
 			where TBooking : RoomBookingBase, new()
 		{
